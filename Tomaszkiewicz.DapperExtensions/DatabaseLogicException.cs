@@ -7,7 +7,7 @@ namespace Tomaszkiewicz.DapperExtensions
     public class DatabaseLogicException : Exception
     {
         public DatabaseLogicException(SqlException exception, string resolvedDatabaseCode, string query, object args)
-            : base(FormatMessage(exception.Message, resolvedDatabaseCode, query, args), exception)
+            : base(FormatMessage(exception?.Message ?? "No message, exception is null", resolvedDatabaseCode, query, args), exception)
         { }
 
         private static string FormatMessage(string message, string resolvedDatabaseCode, string query, object args)
